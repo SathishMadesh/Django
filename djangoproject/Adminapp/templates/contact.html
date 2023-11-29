@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Me</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+
+  </head>
+  <body>
+    <p>Address;<br>
+    Aannaipallam,<br>
+    Pakkanadu(P.O),<br>
+    Idappadi(T.K),<br>
+    Salem-636501<br>
+    Ph.No:9025255520</p>
+    <ul>
+      <li>Mail ID: s747272946@gmail.com</li>
+    </ul>
+    <hr>
+    <form action="mailto:s747272946@gmail.com" method="post" enctype="text/plain">
+      <label>User Name:</label>
+      <input type="Name" name="Your Name" value="">
+      <br><br>
+      <label>User email:</label>
+      <input type="email" name="Your Email" value="">
+      <br><br>
+      <label>Feedback:</label>
+      <br>
+      <textarea name="Your Message" rows="8" cols="40"></textarea>
+      <br><br>
+      <input type="submit" name="">
+
+    </form>
+
+  </body>
+</html>
