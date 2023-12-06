@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emp list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1>Employee List</h1>
+    {% if emp_list %}
+    <table class="table">
+        <thead >
+            <th>Employe ID </th>
+            <th>Employe Name </th>
+            <th>Employe Salary </th>
+        </thead>
+        <tbody >
+            {% for emp in emp_list %}
+            <tr>
+                <td>{{emp.eid}}</td>
+                <td>{{emp.ename}}</td>
+                <td>{{emp.esal}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>
