@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Display</h1>
+    
+    <table border="2">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for emp in emp_list %}
+            <tr>
+                <td>{{emp.eid}}</td>
+                <td>{{emp.ename}}</td>
+                <td>{{emp.eloc}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.esal}}</td>
+                <td>
+                    <button>Update</button>
+                    <a href="/delete/{{emp.id}}"><button>Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

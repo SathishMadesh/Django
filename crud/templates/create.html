@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Emp Form</h1>
+
+    <form action="/create/" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_eid">Employee ID :</label>
+            {{ empform.eid }}
+        </div>
+        <div>
+            <label for="id_ename">Employee Name :</label>
+            {{ empform.ename }}
+        </div>
+        <div>
+            <label for="id_eloc">Employee Location :</label>
+            {{ empform.eloc }}
+        </div>
+        <div>
+            <label for="id_email">Employee Email :</label>
+            {{ empform.email }}
+        </div>
+        <div>
+            <label for="id_esal">Employee Salary :</label>
+            {{ empform.esal }}
+        </div>
+        <input type="submit" name="submit_button" value="Submit">
+    </form>
+    </form>
+</body>
+</html>
