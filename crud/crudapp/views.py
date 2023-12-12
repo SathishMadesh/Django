@@ -27,3 +27,21 @@ def deleteemp(request,id):
     empdata = Employee.objects.get(id=id)
     empdata.delete()
     return redirect('/display/')
+
+def editemp(request,id):
+    employee = Employee.objects.get(id=id)
+    return render (request,'update.html',{'employee':employee})
+
+def updateemp(request, id):
+    empdata = Employee.objects.get(id=id)
+    if request.method == "POST":
+        empdata = EmployeeForm(request.POST,instance=empdata)
+        if empdata.is_valid():
+            try:
+                empdata.save()
+                return redirect('/display/')
+            except:
+                pass
+    
+    else:
+        return render(request,'update.html')
