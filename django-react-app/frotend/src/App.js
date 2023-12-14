@@ -36,8 +36,35 @@ class App extends Component {
       model:false,
       viewCompleted: false,
       taskList: tasks,
+      activeItem: {
+        title:"",
+        description:"",
+        completed:false
+      },
+      taskList: tasks,
     };
   }
+
+  toggle = () => {
+    this.setState({model: !this.state.model});
+  }
+  handelSubmit = item => {
+    this.toggle();
+    alert('Saved!' + JSON.stringify(item));
+  }
+  handelDelet = item => {
+    alert('Deleted!' + JSON.stringify(item));
+  }
+
+  createItem = () => {
+    const item = {title: "", model: !this.state.model};
+    this.setState({activeItem:item, model: !this.state.model});
+  }
+
+  editItem = item => {
+    this.setState({activeItem:item,model:!this.state.model});
+  }
+
 
   displayCompleted = (status) => {
     if (status) {
@@ -100,6 +127,11 @@ class App extends Component {
             </Card>
           </div>
         </div>
+        {this.state.model ? (
+          <CustomModal
+          activeItem = {this.state.activeItem} toggle = {this.toggle}
+          onSave = {this.handelSubmit} />
+        ) : null}
       </main>
     );
   }
