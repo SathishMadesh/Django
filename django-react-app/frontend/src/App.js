@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import CustomModal from './components/Modal';
+import Model from './components/Modal';
 
 const tasks = [
   {
@@ -76,32 +76,34 @@ class App extends Component {
   renderTabList = () => {
     return (
       <div className="my-5 tab-list">
-        <Button
+        <span
           variant={this.state.viewCompleted ? 'outline-secondary' : 'secondary'}
           onClick={() => this.displayCompleted(true)}
         >
           Completed
-        </Button>
-        <Button
+        </span>
+        <span
           variant={this.state.viewCompleted ? 'secondary' : 'outline-secondary'}
           onClick={() => this.displayCompleted(false)}
         >
           Incompleted
-        </Button>
+        </span>
       </div>
     );
-  };
+  }; 
 
   renderItems = () => {
     const { viewCompleted } = this.state;
-    const newItem = this.state.taskList.filter((item) => item.completed === viewCompleted);
+    const newItem = this.state.taskList.filter(
+      (item) => item.completed === viewCompleted);
 
     return newItem.map((item) => (
       <ListGroupItem
         key={item.id}
         className="d-flex justify-content-between align-items-center"
       >
-        <span className={`todo-title mr-2 ${this.viewCompleted ? 'completed-todo' : ''}`} title={item.title}>
+        <span className={`todo-title mr-2 ${this.viewCompleted ? 'completed-todo' : ''}`} 
+          title={item.title}>
           {item.title}
         </span>
         <span>
@@ -128,7 +130,7 @@ class App extends Component {
           </div>
         </div>
         {this.state.model ? (
-          <CustomModal
+          <Model
           activeItem = {this.state.activeItem} toggle = {this.toggle}
           onSave = {this.handelSubmit} />
         ) : null}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Button, Form, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
-class CustomModal extends Component {
+class Model extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class CustomModal extends Component {
   };
 
   render() {
-    const { toggle, onSave } = this.props;
+    const { toggle, onSave } = this.props; 
 
     return (
       <Modal show={true} onHide={toggle}>
@@ -73,4 +73,4 @@ class CustomModal extends Component {
   }
 }
 
-export default CustomModal;
+export default Model;

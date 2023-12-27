@@ -14,16 +14,20 @@ body {
 .completed-todo{
   text-decoration: line-through;
 }
+span > Button{
+  margin: 0px 5px;
+}
 
 .tab-list > span {
   padding: 5px 8px;
-  border : 1px solid lightblue;
+  border : 1px solid rgb(80, 202, 243);
   border-radius: 10px;
   margin-right: 20px;
   cursor: pointer;
+  transition: .4s;
 }
 
-.tab-list>span.action {
-  background-color: lightblue;
+.tab-list > span:hover{
+  background-color: rgb(80, 202, 243);
   color: white;
 }
