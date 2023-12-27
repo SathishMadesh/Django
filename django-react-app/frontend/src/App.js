@@ -25,7 +25,7 @@ const tasks = [
     id: 4,
     title: 'Read',
     description: 'Read at least three pages from the book.',
-    completed: false,
+    completed: true,
   },
 ];
 
