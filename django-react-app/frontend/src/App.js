@@ -1,33 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Model from './components/Modal';
+import axios from 'axios';
 
-const tasks = [
-  {
-    id: 1,
-    title: 'Dunning',
-    description: 'Sending dunning letters to clients for uncollected cash.',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Milk',
-    description: 'Go to the grocery shop and buy a milk packet.',
-    completed: false,
-  },
-  {
-    id: 3,
-    title: 'Home Work',
-    description: 'Do my homework.',
-    completed: false,
-  },
-  {
-    id: 4,
-    title: 'Read',
-    description: 'Read at least three pages from the book.',
-    completed: true,
-  },
-];
+
 
 class App extends Component {
   constructor(props) {
@@ -35,25 +11,41 @@ class App extends Component {
     this.state = {
       model:false,
       viewCompleted: false,
-      taskList: tasks,
       activeItem: {
         title:"",
         description:"",
         completed:false
       },
-      taskList: tasks,
+      todolist: []
     };
   }
+
+  componentDidMount() {
+    this.refreshList();
+  }
+
+  refreshList = () => {
+    axios.get("http://127.0.0.1:8000/api/tasks/")
+    .then(resp=>this.state({todolist:resp.data}))
+    .catch(err => console.log(err))
+  }
+
 
   toggle = () => {
     this.setState({model: !this.state.model});
   }
   handelSubmit = item => {
     this.toggle();
-    alert('Saved!' + JSON.stringify(item));
+    if (item.id) {
+      axios.put(`http://127.0.0.1:8000/api/tasks/${item.id}/`,item)
+      .then(resp => this.refreshList())
+    }
+    axios.post("http://127.0.0.1:8000/api/tasks/", item)
+    .then(resp => this.refreshList())
   }
   handelDelet = item => {
-    alert('Deleted!' + JSON.stringify(item));
+      axios.put(`http://127.0.0.1:8000/api/tasks/${item.id}/`)
+      .then(resp => this.refreshList())
   }
 
   createItem = () => {
@@ -94,7 +86,7 @@ class App extends Component {
 
   renderItems = () => {
     const { viewCompleted } = this.state;
-    const newItem = this.state.taskList.filter(
+    const newItem = this.state.todolist.filter(
       (item) => item.completed === viewCompleted);
 
     return newItem.map((item) => (
