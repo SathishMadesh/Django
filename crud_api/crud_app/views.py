@@ -29,4 +29,6 @@ def updateView(request, id):
 
 @api_view(['DELETE'])
 def deleteView(request, id):
-    pass
+    empdata = Employees.objects.get(id=id)
+    empdata.delete()
+    return Response(status=204)
