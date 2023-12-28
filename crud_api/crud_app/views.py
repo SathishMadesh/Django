@@ -21,7 +21,11 @@ def postView(request):
 
 @api_view(['PUT'])
 def updateView(request, id):
-    pass
+    empdata = Employees.objects.get(id=id)
+    serializer = EmpSerializer(empdata, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
 
 @api_view(['DELETE'])
 def deleteView(request, id):
