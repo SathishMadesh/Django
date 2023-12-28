@@ -14,7 +14,10 @@ def getView(request):
 
 @api_view(['POST'])
 def postView(request):
-    pass
+    serializer = EmpSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
 
 @api_view(['PUT'])
 def updateView(request, id):
