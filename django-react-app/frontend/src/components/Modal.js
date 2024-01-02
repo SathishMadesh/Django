@@ -9,18 +9,15 @@ class Model extends Component {
     };
   }
 
-  // To check if the checkbox is checked or not
   handleChange = (e) => {
-    let { name, value } = e.target;
-    if (e.target.type === "checkbox") {
-      value = e.target.checked;
-    }
-    const activeItem = { ...this.state.activeItem, [name]: value };
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    const activeItem = { ...this.state.activeItem, [name]: newValue };
     this.setState({ activeItem });
   };
 
   render() {
-    const { toggle, onSave } = this.props; 
+    const { toggle, onSave } = this.props;
 
     return (
       <Modal show={true} onHide={toggle}>
@@ -55,6 +52,7 @@ class Model extends Component {
               <FormControl
                 type="checkbox"
                 name="completed"
+                className="form-check-input"
                 checked={this.state.activeItem.completed}
                 onChange={this.handleChange}
               />
