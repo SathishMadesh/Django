@@ -28,7 +28,7 @@ def product_details(request, pk):  # id or pk(primary key)
         product = Products.objects.get(pk=pk)
     except product.DoesNotExist:
         return Response(status=404)
-    
+     
     if request.method == 'GET':
         serializer = ProductsSerializer(product)
         return Response(serializer.data)
@@ -39,7 +39,7 @@ def product_details(request, pk):  # id or pk(primary key)
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
-    
+     
     elif request.method == 'DELETE':
         product.delete()
         return Response(status=204)
