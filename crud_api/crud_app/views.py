@@ -11,7 +11,7 @@ def getView(request):
     employee = Employees.objects.all()
     serializer = EmpSerializer(employee, many=True)
     return Response(serializer.data)
-
+ 
 @api_view(['POST'])
 def postView(request):
     serializer = EmpSerializer(data=request.data)
