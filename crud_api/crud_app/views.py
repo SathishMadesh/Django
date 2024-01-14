@@ -18,7 +18,7 @@ def postView(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
-
+ 
 @api_view(['PUT'])
 def updateView(request, id):
     empdata = Employees.objects.get(id=id)
